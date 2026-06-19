@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -24,8 +25,15 @@ export function SiteNav() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-ink/80 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-[1800px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <Link href="/" className="text-2xl font-black tracking-normal text-white sm:text-3xl">
-          SIXTEEN
+        <Link href="/" className="block w-[180px]">
+          <Image
+            src="/logo_sixttensvg.svg"
+            alt="SIXTEEN"
+            width={180}
+            height={50}
+            priority
+            className="h-auto w-full"
+          />
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-bold uppercase text-white/70 md:flex">
           {navItems.map((item) => (
