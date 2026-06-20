@@ -1,62 +1,70 @@
+import Image from "next/image";
 import Link from "next/link";
-
-const qa = [
-  [
-    "What does editorial mean for SIXTEEN?",
-    "It means sequence. We think in openings, rhythm, emphasis, silence, and release. A brand becomes clearer when every asset knows where it sits in the story.",
-  ],
-  [
-    "Where does AI enter the process?",
-    "AI is a production instrument, not a taste replacement. It helps us prototype directions quickly, but the final shape still depends on judgment, restraint, and a point of view.",
-  ],
-  [
-    "Why so much minimalism?",
-    "Minimalism gives the work fewer places to hide. If the line is weak, you see it. If the idea is strong, it gets louder.",
-  ],
-  [
-    "What makes a campaign durable?",
-    "A durable campaign has rules, but not a cage. It can repeat without getting tired and mutate without losing its name.",
-  ],
-];
+import { MotionSection } from "@/components/motion-section";
+import { archive001 } from "@/lib/stories";
 
 export default function Archive001Page() {
   return (
-    <article className="px-5 pt-36 sm:px-8 lg:px-12">
+    <article className="min-h-screen bg-black px-5 pb-28 pt-32 text-white sm:px-8 sm:pt-40 lg:px-12">
       <div className="mx-auto max-w-[1800px]">
-        <Link href="/stories" className="text-sm font-black uppercase text-story hover:text-white">
-          Stories
+        <Link
+          href="/stories"
+          className="inline-block text-xs font-bold uppercase text-white/60 transition hover:text-white"
+        >
+          Archive / Index
         </Link>
-        <header className="mt-8 grid gap-8 border-b border-story/35 pb-12 lg:grid-cols-[1.2fr_0.8fr]">
-          <h1 className="text-[17vw] font-black uppercase leading-[0.8] text-white sm:text-[13vw] lg:text-[10vw]">
-            Archive 001
+
+        <header className="mt-8 border-y border-white/30 py-9 sm:py-12">
+          <div className="flex items-start justify-between gap-6">
+            <p className="text-sm font-black uppercase">Archive</p>
+            <p className="text-sm font-black">{archive001.number}</p>
+          </div>
+          <h1 className="mt-16 max-w-[1500px] text-6xl font-black uppercase leading-[0.84] sm:mt-24 sm:text-8xl lg:text-[9rem] xl:text-[11rem]">
+            {archive001.name}
           </h1>
-          <div className="self-end">
-            <p className="text-sm font-black uppercase text-story">Interview / Q&A</p>
-            <p className="mt-5 text-3xl font-black uppercase leading-none text-white sm:text-5xl">
-              The Editorial Machine
-            </p>
-          </div>
+          <p className="mt-8 text-xl uppercase text-white/65 sm:text-3xl">{archive001.profession}</p>
         </header>
-        <section className="grid gap-10 py-12 lg:grid-cols-[0.55fr_1.45fr]">
-          <p className="text-sm font-black uppercase text-story">Conversation</p>
-          <div>
-            <p className="max-w-4xl text-4xl font-black uppercase leading-[0.95] text-white sm:text-6xl">
-              A studio note on systems, pace, artificial intelligence, and the discipline of keeping a brand legible.
-            </p>
+
+        <MotionSection className="py-10 sm:py-16">
+          <div className="relative aspect-[4/5] overflow-hidden border border-white/70 sm:aspect-[16/10] lg:aspect-[16/9]">
+            <Image
+              src={archive001.cover}
+              alt={`${archive001.name} al lavoro in cucina`}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover grayscale"
+            />
           </div>
-        </section>
-        <section className="pb-24">
-          {qa.map(([question, answer], index) => (
-            <div
-              key={question}
-              className="grid gap-6 border-t border-story/25 py-9 lg:grid-cols-[0.25fr_0.75fr_1fr]"
+        </MotionSection>
+
+        <section className="border-t border-white/30">
+          {archive001.questions.map((item, index) => (
+            <MotionSection
+              key={item.question}
+              className="border-b border-white/20 py-24 sm:py-32 lg:py-40"
             >
-              <span className="text-sm font-black text-story">{String(index + 1).padStart(2, "0")}</span>
-              <h2 className="text-3xl font-black uppercase leading-none text-white sm:text-5xl">
-                {question}
+              <p className="mb-10 text-xs font-bold text-white/45 sm:mb-14">
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <h2 className="max-w-full text-4xl font-black uppercase leading-[0.95] text-story sm:text-6xl md:max-w-[70%] lg:text-7xl xl:text-8xl">
+                {item.question}
               </h2>
-              <p className="text-xl font-bold leading-tight text-white/70 sm:text-2xl">{answer}</p>
-            </div>
+              <p className="mt-12 max-w-[800px] text-xl font-normal leading-[1.65] text-white sm:mt-16 sm:text-2xl">
+                {item.answer}
+              </p>
+              {item.image ? (
+                <div className="relative mt-20 aspect-[4/3] w-full overflow-hidden border border-white/70 sm:mt-28">
+                  <Image
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
+                  />
+                </div>
+              ) : null}
+            </MotionSection>
           ))}
         </section>
       </div>
