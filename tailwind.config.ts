@@ -15,6 +15,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["Arial", "Helvetica", "sans-serif"],
+        editorial: ["Didot", "Bodoni 72", "Bodoni MT", "Times New Roman", "serif"],
       },
     },
   },

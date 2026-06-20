@@ -46,7 +46,9 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
         <div className="absolute inset-0 bg-black/45" />
         <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-[1800px] flex-col justify-between px-5 py-8 sm:px-8 sm:py-12 lg:px-12">
           <div className="flex items-start justify-between gap-6 text-xs font-black uppercase sm:text-sm">
-            <p>Archive {entry.number}</p>
+            <p>
+              Archive <span className="text-archive">{entry.number}</span>
+            </p>
             <Link href="/stories" className="transition hover:text-white/60">
               Index
             </Link>
@@ -55,7 +57,7 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
           <div className="pt-24">
             <h1 className="max-w-[13ch] text-5xl font-black uppercase leading-[0.86] sm:text-7xl md:text-8xl lg:text-9xl xl:text-[8.5rem]">
               <span className="block">{entry.title}</span>
-              <span className="block">{entry.name}</span>
+              <span className="block text-archive">{entry.name}</span>
             </h1>
             <div className="mt-9 grid max-w-3xl gap-2 border-t border-white/60 pt-5 text-sm font-bold uppercase sm:grid-cols-3 sm:text-base">
               <p>{entry.profession}</p>
@@ -66,22 +68,24 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
         </div>
       </header>
 
-      <MotionSection className="px-5 py-28 sm:px-8 sm:py-40 lg:px-12 lg:py-52">
+      <MotionSection className="px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
         <div className="mx-auto grid max-w-[1600px] gap-12 lg:grid-cols-[0.35fr_1.65fr]">
           <p className="text-xs font-black uppercase text-white/45">Introduction</p>
           <p className="max-w-5xl text-3xl font-normal leading-[1.15] sm:text-5xl lg:text-6xl">
-            {entry.introduction}
+            {entry.introduction.beforeName}
+            <span className="font-black uppercase text-archive">{entry.name}</span>
+            {entry.introduction.afterName}
           </p>
         </div>
       </MotionSection>
 
-      <MotionSection className="px-5 pb-28 sm:px-8 sm:pb-40 lg:px-12 lg:pb-52">
-        <div className="relative mx-auto aspect-[3/4] max-w-[900px] overflow-hidden border border-white/50">
+      <MotionSection className="px-5 pb-20 sm:px-8 sm:pb-28 lg:px-12 lg:pb-32">
+        <div className="relative mx-auto aspect-[3/4] max-w-[720px] overflow-hidden border border-white/50">
           <Image
             src={entry.featureImage.src}
             alt={entry.featureImage.alt}
             fill
-            sizes="(min-width: 1536px) 1450px, 100vw"
+            sizes="(min-width: 768px) 720px, 100vw"
             className="object-cover"
           />
         </div>
@@ -92,45 +96,52 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
           {entry.questions.map((item, index) => (
             <MotionSection
               key={item.question}
-              className="border-b border-white/20 py-28 sm:py-40 lg:py-52"
+              className="border-b border-white/20 py-16 sm:py-20 lg:py-24"
             >
-              <p className="mb-10 text-xs font-bold text-white/40 sm:mb-14">
+              <p className="mb-7 text-xs font-bold text-white/40 sm:mb-9">
                 {String(index + 1).padStart(2, "0")}
               </p>
               <h2 className="max-w-full text-4xl font-black uppercase leading-[0.95] text-archive sm:text-6xl md:max-w-[70%] lg:text-7xl xl:text-8xl">
                 {item.question}
               </h2>
-              <p className="mt-12 max-w-[800px] text-xl font-normal leading-[1.7] sm:ml-[12%] sm:mt-20 sm:text-2xl">
+              <p className="mt-9 max-w-[680px] text-xl font-normal leading-[1.7] sm:ml-[10%] sm:mt-12 sm:text-2xl">
                 {item.answer}
               </p>
 
               {item.image ? (
                 <div
-                  className={`relative mt-24 aspect-[4/3] overflow-hidden border border-white/50 sm:mt-36 ${
+                  className={`relative mx-auto mt-14 overflow-hidden border border-white/50 sm:mt-20 ${
                     item.image.orientation === "portrait"
-                      ? index === 2
-                        ? "ml-auto aspect-[3/4] max-w-[900px]"
-                        : "aspect-[3/4] max-w-[1000px]"
-                      : "aspect-[4/3] max-w-[1350px]"
+                      ? "aspect-[3/4] max-w-[700px]"
+                      : "aspect-[4/3] max-w-[1000px]"
                   }`}
                 >
                   <Image
                     src={item.image.src}
                     alt={item.image.alt}
                     fill
-                    sizes="(min-width: 1536px) 1450px, 100vw"
+                    sizes="(min-width: 1024px) 1000px, 100vw"
                     className="object-cover"
                   />
                 </div>
               ) : null}
             </MotionSection>
           ))}
+
+          <MotionSection className="border-b border-white/20 py-20 sm:py-28 lg:py-32">
+            <p className="text-xs font-black uppercase text-archive">{entry.closingPrompt.label}</p>
+            <blockquote className="mt-9 max-w-6xl font-editorial text-4xl font-normal leading-[1.08] text-white sm:mt-12 sm:text-6xl lg:text-7xl">
+              “{entry.closingPrompt.question}”
+            </blockquote>
+          </MotionSection>
         </div>
       </section>
 
-      <footer className="px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+      <footer className="px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
         <div className="mx-auto flex max-w-[1600px] items-end justify-between gap-8">
-          <p className="text-xs font-black uppercase text-white/45">End of Archive {entry.number}</p>
+          <p className="text-xs font-black uppercase text-white/45">
+            End of Archive <span className="text-archive">{entry.number}</span>
+          </p>
           <Link href="/stories" className="text-sm font-black uppercase transition hover:text-white/60">
             Back to index
           </Link>

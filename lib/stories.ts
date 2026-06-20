@@ -17,13 +17,20 @@ export type ArchiveEntry = {
   date: string;
   title: string;
   description: string;
-  introduction: string;
+  introduction: {
+    beforeName: string;
+    afterName: string;
+  };
   cover: string;
   featureImage: {
     src: string;
     alt: string;
   };
   questions: ArchiveQuestion[];
+  closingPrompt: {
+    label: string;
+    question: string;
+  };
 };
 
 export const archiveEntries: ArchiveEntry[] = [
@@ -36,8 +43,11 @@ export const archiveEntries: ArchiveEntry[] = [
     date: "June 2026",
     title: "In cucina con",
     description: "Tradizione e innovazione, costruire qualcosa che lasci il segno.",
-    introduction:
-      "Nella cucina di Giuseppe Presta ogni gesto parte dalla memoria e cerca una forma nuova. A Roma, tra il ritmo del servizio e la precisione dell'impiattamento, lo chef costruisce un linguaggio fatto di materia, tempo e ospitalità.",
+    introduction: {
+      beforeName: "Nella cucina di ",
+      afterName:
+        " ogni gesto parte dalla memoria e cerca una forma nuova. A Roma, tra il ritmo del servizio e la precisione dell'impiattamento, lo chef costruisce un linguaggio fatto di materia, tempo e ospitalità.",
+    },
     cover: "/archive-001/cover-giuseppe.jpg",
     featureImage: {
       src: "/archive-001/impiattamento.jpg",
@@ -90,6 +100,10 @@ export const archiveEntries: ArchiveEntry[] = [
           "Significa che le persone ricordano non solo il cibo, ma la sensazione che provano entrando nel mio locale, interagendo con il mio team e vivendo l'esperienza che ho creato.",
       },
     ],
+    closingPrompt: {
+      label: "Una sola scelta",
+      question: "Se qualcuno dovesse assaggiare un solo tuo piatto per capire chi sei, quale sarebbe?",
+    },
   },
 ];
 

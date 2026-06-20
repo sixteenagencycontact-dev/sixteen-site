@@ -29,12 +29,12 @@ export default function StoriesPage() {
               </div>
               <div className="mt-5 flex items-start justify-between gap-5 border-t border-white/30 pt-4">
                 <div>
-                  <h2 className="text-3xl font-black uppercase leading-none sm:text-4xl">
+                  <h2 className="text-3xl font-black uppercase leading-none text-archive sm:text-4xl">
                     {entry.name}
                   </h2>
                   <p className="mt-2 text-sm font-bold uppercase text-white/60">{entry.profession}</p>
                 </div>
-                <p className="shrink-0 text-sm font-black">{entry.number}</p>
+                <p className="shrink-0 text-sm font-black text-archive">{entry.number}</p>
               </div>
               <p className="mt-6 max-w-sm text-lg leading-relaxed text-white/75">{entry.description}</p>
             </Link>
