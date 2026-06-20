@@ -17,7 +17,7 @@ export default function Archive001Page() {
         <header className="mt-8 border-y border-white/30 py-9 sm:py-12">
           <div className="flex items-start justify-between gap-6">
             <p className="text-sm font-black uppercase">Archive</p>
-            <p className="text-sm font-black">{archive001.number}</p>
+            <p className="text-sm font-black text-archive">{archive001.number}</p>
           </div>
           <h1 className="mt-16 max-w-[1500px] text-6xl font-black uppercase leading-[0.84] sm:mt-24 sm:text-8xl lg:text-[9rem] xl:text-[11rem]">
             {archive001.name}
@@ -47,7 +47,7 @@ export default function Archive001Page() {
               <p className="mb-10 text-xs font-bold text-white/45 sm:mb-14">
                 {String(index + 1).padStart(2, "0")}
               </p>
-              <h2 className="max-w-full text-4xl font-black uppercase leading-[0.95] text-story sm:text-6xl md:max-w-[70%] lg:text-7xl xl:text-8xl">
+              <h2 className="max-w-full text-4xl font-black uppercase leading-[0.95] text-archive sm:text-6xl md:max-w-[70%] lg:text-7xl xl:text-8xl">
                 {item.question}
               </h2>
               <p className="mt-12 max-w-[800px] text-xl font-normal leading-[1.65] text-white sm:mt-16 sm:text-2xl">

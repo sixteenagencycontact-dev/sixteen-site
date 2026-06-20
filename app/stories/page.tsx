@@ -34,7 +34,7 @@ export default function StoriesPage() {
                   </h2>
                   <p className="mt-2 text-sm font-bold uppercase text-white/60">{entry.profession}</p>
                 </div>
-                <p className="shrink-0 text-sm font-black">{entry.number}</p>
+                <p className="shrink-0 text-sm font-black text-archive">{entry.number}</p>
               </div>
               <p className="mt-6 max-w-sm text-lg leading-relaxed text-white/75">{entry.description}</p>
             </Link>

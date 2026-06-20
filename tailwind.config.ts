@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         ink: "#050505",
         paper: "#f7f7f1",
-        story: "#FACF0A",
+        archive: "#F3DE6D",
       },
       fontFamily: {
         sans: ["Arial", "Helvetica", "sans-serif"],
