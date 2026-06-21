@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LabIndexNav } from "@/components/lab-index-nav";
 import { MotionSection } from "@/components/motion-section";
 import { labModules } from "@/lib/lab";
 
@@ -10,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function LabPage() {
   return (
-    <div className="min-h-screen bg-black px-5 pb-28 pt-32 text-white sm:px-8 sm:pt-40 lg:px-12">
-      <div className="mx-auto max-w-[1800px]">
+    <div className="min-h-screen bg-black pt-32 text-white sm:pt-40">
+      <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-12">
         <header className="border-b border-white/25 pb-14 sm:pb-20">
           <p className="text-xs font-black uppercase text-[#7A7A7A]">SIXTEEN / Internal Universe</p>
           <h1 className="mt-7 text-7xl font-black uppercase leading-[0.8] sm:text-9xl lg:text-[11rem]">Lab</h1>
@@ -55,6 +56,7 @@ export default function LabPage() {
           <p>Archive / People and stories</p>
         </footer>
       </div>
+      <LabIndexNav current="lab" />
     </div>
   );
 }

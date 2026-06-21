@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LabHeader } from "@/components/lab-header";
+import { LabIndexNav } from "@/components/lab-index-nav";
 
 export const metadata: Metadata = {
   title: "KOL BUC | SIXTEEN",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function KolBucPage() {
   return (
-    <div className="min-h-screen bg-black pb-24 text-white">
+    <div className="min-h-screen bg-black text-white">
       <LabHeader index="03" title="Kol Buc" description="Direzione creativa e crescita artistica." />
       <section className="px-5 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-[1800px] gap-12 lg:grid-cols-[0.65fr_1.35fr]">
@@ -70,6 +71,7 @@ export default function KolBucPage() {
           ))}
         </div>
       </section>
+      <LabIndexNav current="kol-buc" />
     </div>
   );
 }

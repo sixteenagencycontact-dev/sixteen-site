@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LabCharacterSection } from "@/components/lab-character-section";
 import { LabHeader } from "@/components/lab-header";
+import { LabIndexNav } from "@/components/lab-index-nav";
 import { labCharacters } from "@/lib/lab";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function AiLabPage() {
           </div>
         </div>
       </section>
+      <LabIndexNav current="ai-lab" />
     </div>
   );
 }

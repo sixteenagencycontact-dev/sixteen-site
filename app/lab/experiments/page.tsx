@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LabHeader } from "@/components/lab-header";
+import { LabIndexNav } from "@/components/lab-index-nav";
 import { experiments } from "@/lib/lab";
 
 export const metadata: Metadata = {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ExperimentsPage() {
   return (
-    <div className="min-h-screen bg-black pb-24 text-white">
+    <div className="min-h-screen bg-black text-white">
       <LabHeader index="05" title="Experiments" description="Visual research and ongoing projects." />
       <section className="px-5 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-[1800px] gap-4 md:grid-cols-3">
@@ -24,6 +25,7 @@ export default function ExperimentsPage() {
           ))}
         </div>
       </section>
+      <LabIndexNav current="experiments" />
     </div>
   );
 }

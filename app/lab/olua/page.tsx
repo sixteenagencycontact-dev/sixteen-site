@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LabHeader } from "@/components/lab-header";
+import { LabIndexNav } from "@/components/lab-index-nav";
 import { oluaLinks } from "@/lib/lab";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function OluaPage() {
   return (
-    <div className="min-h-screen bg-black pb-24 text-white">
+    <div className="min-h-screen bg-black text-white">
       <LabHeader index="02" title="Olua" description="Voice project, conversations and editorial formats." />
       <section className="px-5 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1800px]">
@@ -43,6 +44,7 @@ export default function OluaPage() {
           </div>
         </div>
       </section>
+      <LabIndexNav current="olua" />
     </div>
   );
 }

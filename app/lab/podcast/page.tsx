@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LabHeader } from "@/components/lab-header";
+import { LabIndexNav } from "@/components/lab-index-nav";
 import { podcasts } from "@/lib/lab";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PodcastPage() {
   return (
-    <div className="min-h-screen bg-black pb-24 text-white">
+    <div className="min-h-screen bg-black text-white">
       <LabHeader index="04" title="Podcast" description="Conversazioni, cibo e cultura." />
       <section className="px-5 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-[1800px] gap-x-6 gap-y-14 md:grid-cols-3">
@@ -31,6 +32,7 @@ export default function PodcastPage() {
           ))}
         </div>
       </section>
+      <LabIndexNav current="podcast" />
     </div>
   );
 }
