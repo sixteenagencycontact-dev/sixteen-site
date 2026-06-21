@@ -11,6 +11,39 @@ export type LabCharacter = {
   }>;
 };
 
+export const labModules = [
+  {
+    number: "01",
+    slug: "ai-lab",
+    title: "AI Lab",
+    description: "Digital characters, campaigns and experiments.",
+  },
+  {
+    number: "02",
+    slug: "olua",
+    title: "Olua",
+    description: "Voice project, conversations and editorial formats.",
+  },
+  {
+    number: "03",
+    slug: "kol-buc",
+    title: "Kol Buc",
+    description: "Direzione creativa e crescita artistica.",
+  },
+  {
+    number: "04",
+    slug: "podcast",
+    title: "Podcast",
+    description: "Conversazioni, cibo e cultura.",
+  },
+  {
+    number: "05",
+    slug: "experiments",
+    title: "Experiments",
+    description: "Visual research and ongoing projects.",
+  },
+];
+
 export const labCharacters: LabCharacter[] = [
   {
     name: "Lyla",
@@ -41,7 +74,11 @@ export const labCharacters: LabCharacter[] = [
 export const oluaLinks = [
   { label: "Instagram", href: "https://www.instagram.com/", icon: "/lab/icons/instagram.svg" },
   { label: "TikTok", href: "https://www.tiktok.com/", icon: "/lab/icons/tiktok.svg" },
-  { label: "YouTube", href: "https://www.youtube.com/", icon: "/lab/icons/youtube.svg" },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/channel/UCrJQNrQWiW99TRzSWywHhcA",
+    icon: "/lab/icons/youtube.svg",
+  },
 ];
 
 export const podcasts = [
@@ -55,3 +92,7 @@ export const experiments = [
   { title: "Visual Research", status: "Coming soon" },
   { title: "Film", status: "Coming soon" },
 ];
+
+export function getLabModule(slug: string) {
+  return labModules.find((module) => module.slug === slug);
+}

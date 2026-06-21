@@ -36,15 +36,20 @@ export function SiteNav() {
           />
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-bold uppercase text-white/70 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={pathname === item.href ? "text-white" : "transition hover:text-white"}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active =
+              item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={active ? "text-white" : "transition hover:text-white"}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
         <button
           type="button"
