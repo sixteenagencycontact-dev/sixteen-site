@@ -79,7 +79,7 @@ export function SiteNav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22 }}
-            className="fixed inset-x-0 top-20 h-[calc(100dvh-5rem)] bg-ink px-5 py-8 md:hidden"
+            className="fixed inset-x-0 top-20 h-[calc(100dvh-5rem)] overflow-y-auto bg-ink px-5 py-6 md:hidden"
           >
             <div className="flex h-full flex-col justify-between">
               <div className="flex flex-col gap-2">
@@ -92,7 +92,7 @@ export function SiteNav() {
                   >
                     <Link
                       href={item.href}
-                      className="block border-b border-white/10 py-5 text-[15vw] font-black uppercase leading-none text-white"
+                      className="block border-b border-white/10 py-3 text-5xl font-black uppercase leading-none text-white sm:text-6xl"
                     >
                       {item.label}
                     </Link>
