@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import { ArchiveCard } from "@/components/archive-card";
 import { MotionSection } from "@/components/motion-section";
 import { archiveEntries } from "@/lib/stories";
 
@@ -14,30 +13,9 @@ export default function StoriesPage() {
           </h1>
         </header>
 
-        <MotionSection className="grid gap-x-6 gap-y-20 py-12 sm:grid-cols-2 sm:py-16 lg:grid-cols-3 xl:grid-cols-4">
+        <MotionSection className="grid gap-x-6 gap-y-20 py-12 sm:grid-cols-2 sm:py-16 lg:grid-cols-3">
           {archiveEntries.map((entry) => (
-            <Link key={entry.slug} href={`/stories/${entry.slug}`} className="group block">
-              <div className="relative aspect-[4/5] overflow-hidden border border-white/70 bg-white/5">
-                <Image
-                  src={entry.cover}
-                  alt={`${entry.name}, ${entry.profession}`}
-                  fill
-                  priority={entry.number === "001"}
-                  sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover grayscale transition duration-700 ease-out group-hover:scale-[1.025] group-hover:grayscale-0"
-                />
-              </div>
-              <div className="mt-5 flex items-start justify-between gap-5 border-t border-white/30 pt-4">
-                <div>
-                  <h2 className="text-3xl font-black uppercase leading-none text-archive sm:text-4xl">
-                    {entry.name}
-                  </h2>
-                  <p className="mt-2 text-sm font-bold uppercase text-white/60">{entry.profession}</p>
-                </div>
-                <p className="shrink-0 text-sm font-black text-archive">{entry.number}</p>
-              </div>
-              <p className="mt-6 max-w-sm text-lg leading-relaxed text-white/75">{entry.description}</p>
-            </Link>
+            <ArchiveCard key={entry.slug} entry={entry} priority={entry.number === "001"} />
           ))}
         </MotionSection>
       </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArchiveCard } from "@/components/archive-card";
 import { MotionSection } from "@/components/motion-section";
 import { archiveEntries, getArchiveEntry } from "@/lib/stories";
 
@@ -37,7 +38,7 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
       <header className="relative mt-20 min-h-[calc(100svh-5rem)] overflow-hidden">
         <Image
           src={entry.cover}
-          alt={`${entry.name} al lavoro in cucina`}
+          alt={`${entry.name}, ${entry.profession}`}
           fill
           priority
           sizes="100vw"
@@ -59,16 +60,16 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
               <span className="block">{entry.title}</span>
               <span className="block text-archive">{entry.name}</span>
             </h1>
-            <div className="mt-9 grid max-w-3xl gap-2 border-t border-white/60 pt-5 text-sm font-bold uppercase sm:grid-cols-3 sm:text-base">
-              <p>{entry.profession}</p>
-              <p>{entry.location}</p>
-              <p>{entry.date}</p>
+            <div className="mt-9 max-w-4xl border-t border-white/60 pt-5 text-sm font-bold uppercase sm:text-base">
+              <p>
+                {entry.profession} · {entry.location} · {entry.issueDate}
+              </p>
             </div>
           </div>
         </div>
       </header>
 
-      <MotionSection className="px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+      <MotionSection className="px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
         <div className="mx-auto grid max-w-[1600px] gap-12 lg:grid-cols-[0.35fr_1.65fr]">
           <p className="text-xs font-black uppercase text-white/45">Introduction</p>
           <p className="max-w-5xl text-3xl font-normal leading-[1.15] sm:text-5xl lg:text-6xl">
@@ -79,13 +80,13 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
         </div>
       </MotionSection>
 
-      <MotionSection className="px-5 pb-20 sm:px-8 sm:pb-28 lg:px-12 lg:pb-32">
-        <div className="relative mx-auto aspect-[3/4] max-w-[720px] overflow-hidden border border-white/50">
+      <MotionSection className="px-5 pb-16 sm:px-8 sm:pb-20 lg:px-12 lg:pb-24">
+        <div className="relative mx-auto aspect-[3/4] max-w-[640px] overflow-hidden border border-white/50">
           <Image
             src={entry.featureImage.src}
             alt={entry.featureImage.alt}
             fill
-            sizes="(min-width: 768px) 720px, 100vw"
+            sizes="(min-width: 768px) 640px, 100vw"
             className="object-cover"
           />
         </div>
@@ -96,31 +97,31 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
           {entry.questions.map((item, index) => (
             <MotionSection
               key={item.question}
-              className="border-b border-white/20 py-16 sm:py-20 lg:py-24"
+              className="border-b border-white/20 py-12 sm:py-16 lg:py-20"
             >
-              <p className="mb-7 text-xs font-bold text-white/40 sm:mb-9">
+              <p className="mb-5 text-xs font-bold text-[#7A7A7A] sm:mb-6">
                 {String(index + 1).padStart(2, "0")}
               </p>
               <h2 className="max-w-full text-4xl font-black uppercase leading-[0.95] text-archive sm:text-6xl md:max-w-[70%] lg:text-7xl xl:text-8xl">
                 {item.question}
               </h2>
-              <p className="mt-9 max-w-[680px] text-xl font-normal leading-[1.7] sm:ml-[10%] sm:mt-12 sm:text-2xl">
+              <p className="mt-7 max-w-[620px] text-xl font-normal leading-[1.7] sm:ml-[10%] sm:mt-9 sm:text-2xl">
                 {item.answer}
               </p>
 
               {item.image ? (
                 <div
-                  className={`relative mx-auto mt-14 overflow-hidden border border-white/50 sm:mt-20 ${
+                  className={`relative mx-auto mt-10 overflow-hidden border border-white/50 sm:mt-12 ${
                     item.image.orientation === "portrait"
-                      ? "aspect-[3/4] max-w-[700px]"
-                      : "aspect-[4/3] max-w-[1000px]"
+                      ? "aspect-[3/4] max-w-[640px]"
+                      : "aspect-[4/3] max-w-[900px]"
                   }`}
                 >
                   <Image
                     src={item.image.src}
                     alt={item.image.alt}
                     fill
-                    sizes="(min-width: 1024px) 1000px, 100vw"
+                    sizes="(min-width: 1024px) 900px, 100vw"
                     className="object-cover"
                   />
                 </div>
@@ -128,22 +129,37 @@ export default async function ArchivePage({ params }: ArchivePageProps) {
             </MotionSection>
           ))}
 
-          <MotionSection className="border-b border-white/20 py-20 sm:py-28 lg:py-32">
-            <p className="text-xs font-black uppercase text-archive">{entry.closingPrompt.label}</p>
-            <blockquote className="mt-9 max-w-6xl font-editorial text-4xl font-normal leading-[1.08] text-white sm:mt-12 sm:text-6xl lg:text-7xl">
-              “{entry.closingPrompt.question}”
+          <MotionSection className="border-b border-white/20 py-16 sm:py-20 lg:py-24">
+            <blockquote className="max-w-6xl font-editorial text-4xl font-normal leading-[1.08] text-white sm:text-6xl lg:text-7xl">
+              “{entry.closingQuestion}”
             </blockquote>
           </MotionSection>
         </div>
       </section>
 
-      <footer className="px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+      <MotionSection className="px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-[1600px]">
+          <p className="text-xs font-black uppercase text-archive">Scopri altre storie</p>
+          <div className="mt-8 grid gap-5">
+            {archiveEntries.map((archive) => (
+              <ArchiveCard
+                key={archive.slug}
+                entry={archive}
+                variant="related"
+                current={archive.slug === entry.slug}
+              />
+            ))}
+          </div>
+        </div>
+      </MotionSection>
+
+      <footer className="px-5 pb-16 sm:px-8 sm:pb-20 lg:px-12">
         <div className="mx-auto flex max-w-[1600px] items-end justify-between gap-8">
           <p className="text-xs font-black uppercase text-white/45">
             End of Archive <span className="text-archive">{entry.number}</span>
           </p>
           <Link href="/stories" className="text-sm font-black uppercase transition hover:text-white/60">
-            Back to index
+            ← Back to Archive
           </Link>
         </div>
       </footer>
