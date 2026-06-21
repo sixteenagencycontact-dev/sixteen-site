@@ -23,17 +23,17 @@ export default function ServicesPage() {
           {services.map(([title, description], index) => (
             <article
               key={title}
-              className="group relative z-0 flex min-h-[360px] flex-col justify-between overflow-hidden border border-white/20 bg-black p-5 transition duration-500 ease-out hover:z-10 hover:scale-[1.015] hover:border-white/45 sm:min-h-[400px] sm:p-7 lg:min-h-[440px]"
+              className="group relative z-0 flex min-h-[300px] flex-col justify-between overflow-hidden border border-white/20 bg-black p-4 transition duration-500 ease-out hover:z-10 hover:scale-[1.015] hover:border-white/45 sm:min-h-[320px] sm:p-5 lg:min-h-[340px]"
             >
               <span className="text-xs font-black text-[#7A7A7A]">{String(index + 1).padStart(2, "0")}</span>
-              <div className="mt-auto pt-20">
+              <div className="mt-auto pt-10">
                 <h2 className="origin-bottom-left text-4xl font-black uppercase leading-none text-white transition duration-500 ease-out group-hover:scale-[1.035] sm:text-5xl xl:text-6xl">
                   {title}
                 </h2>
-                <p className="mt-6 max-w-sm text-base font-normal leading-relaxed text-[#7A7A7A] transition duration-500 group-hover:text-white/80 sm:text-lg">
+                <p className="mt-4 max-w-sm text-base font-normal leading-relaxed text-[#7A7A7A] transition duration-500 group-hover:text-white/80 sm:text-lg">
                   {description}
                 </p>
-                <div className="mt-8 h-px w-full bg-white/25 transition duration-500 group-hover:bg-white/60" />
+                <div className="mt-5 h-px w-full bg-white/25 transition duration-500 group-hover:bg-white/60" />
               </div>
             </article>
           ))}
